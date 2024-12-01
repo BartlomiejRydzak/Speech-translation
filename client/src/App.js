@@ -74,7 +74,7 @@ function App() {
       const response = await fetch('http://localhost:5050/text');
       const data = await response.json();
       console.log(data);
-      setText(data.text); // Assuming the backend sends { text: "some transcribed text" }
+      setText(data.text);
     } catch (error) {
       console.error('Error fetching text:', error);
     }
@@ -89,8 +89,6 @@ function App() {
       <select onChange={handleChange} name="language" id="lng">
         <option value="en-US">english</option>
         <option value="pl-PL">polish</option>
-        {/* <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option> */}
       </select>
       {audioURL && (
         <div>
