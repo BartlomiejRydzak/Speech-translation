@@ -58,7 +58,6 @@ function runPythonScript(scriptPath, args) {
   });
 }
 
-
 app.get("/audio", (req,res)=>{
     fs.readFile('./uploads/blob', {encoding: 'base64'}, (err, data) => {
         if(err) {
@@ -72,12 +71,9 @@ app.get("/audio", (req,res)=>{
 app.post("/upload", upload.any('file'), async (req, res) => {
     try {
       const result = await runPythonScript('../python_micro_env/main.py', [req.body.key]);
-      // console.log(result); // Logs the resolved output of the Python script
-      // console.log()
-      // console.log("Completed");
       res.status(200).send("Updated");
     } catch (error) {
-      console.error(error); // Handles any error that occurs while running the Python script
+      console.error(error);
     }
   });
 
